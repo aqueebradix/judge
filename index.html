@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard My Store · Judge.me Reviews · Shopify</title>
+<style>
+  :root {
+    --p-bg: #f1f1f1;
+    --p-bg-surface: #ffffff;
+    --p-bg-surface-hover: #f7f7f7;
+    --p-bg-surface-secondary: #f7f7f7;
+    --p-bg-fill-secondary: #f1f1f1;
+    --p-bg-fill-tertiary: #e3e3e3;
+    --p-bg-fill-brand: #303030;
+    --p-bg-fill-success-secondary: #affebf;
+    --p-text: #303030;
+    --p-text-secondary: #616161;
+    --p-text-success: #014b40;
+    --p-border: #e3e3e3;
+    --p-border-secondary: #ebebeb;
+    --p-nav-bg: #ebebeb;
+    --p-icon: #4a4a4a;
+    --p-icon-secondary: #8a8a8a;
+    --p-shadow-100: 0 .3125rem .3125rem -.15625rem rgba(0,0,0,.03), 0 .1875rem .1875rem -.09375rem rgba(0,0,0,.02), 0 .125rem .125rem -.0625rem rgba(0,0,0,.02), 0 .0625rem .0625rem -.03125rem rgba(0,0,0,.03), 0 0 0 .0625rem rgba(0,0,0,.06);
+    --p-shadow-button: 0 -.0625rem 0 0 #b5b5b5 inset, 0 0 0 .0625rem rgba(0,0,0,.1) inset, 0 .03125rem 0 .09375rem #fff inset;
+    --p-radius-200: .5rem;
+    --p-radius-300: .75rem;
+    --p-radius-100: .25rem;
+    --p-radius-150: .375rem;
+    --p-font: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    background-color: var(--p-bg);
+    color: var(--p-text);
+    font-family: var(--p-font);
+    font-size: 13px;
+    font-weight: 450;
+    line-height: 1.25rem;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  /* ========== TOP BAR ========== */
+  .topbar {
+    height: 56px;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    color: #fff;
+    position: relative;
+    z-index: 10;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 4px; width: 240px; }
+  .topbar-center { flex: 1; display: flex; justify-content: center; padding: 0 16px; }
+  .topbar-right { display: flex; align-items: center; gap: 4px; }
+
+  .icon-btn {
+    background: transparent;
+    border: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    padding: 0;
+    transition: background 120ms ease;
+  }
+  .icon-btn:hover { background: rgba(255,255,255,0.08); }
+  .icon-btn svg { width: 18px; height: 18px; fill: #fff; }
+
+  .shopify-logo {
+    height: 28px;
+    padding: 0 6px;
+    display: flex;
+    align-items: center;
+  }
+  .shopify-logo img { height: 28px; }
+
+  .search-wrap {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    height: 36px;
+    background: #2b2b2b;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    color: #b5b5b5;
+    padding: 0 64px 0 36px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .search-input:focus { outline: 2px solid #6094ff; }
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    fill: #b5b5b5;
+  }
+  .search-shortcut {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 4px;
+  }
+  .kbd {
+    background: #3a3a3a;
+    border: 1px solid #4a4a4a;
+    border-radius: 4px;
+    color: #d4d4d4;
+    font-size: 10px;
+    font-family: inherit;
+    padding: 2px 5px;
+    line-height: 1;
+    font-weight: 500;
+  }
+
+  .notif {
+    position: relative;
+  }
+  .notif-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #c70a24;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 10px;
+    min-width: 18px;
+    height: 16px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .user-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px 4px 4px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 120ms ease;
+  }
+  .user-menu:hover { background: rgba(255,255,255,0.08); }
+  .avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: #25e82b;
+    color: #033d05;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .user-menu .name {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* ========== LAYOUT ========== */
+  .frame {
+    display: flex;
+    height: calc(100vh - 56px);
+    background: var(--p-bg);
+  }
+
+  /* ========== SIDEBAR ========== */
+  .sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background: var(--p-nav-bg);
+    padding: 8px 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .sidebar::-webkit-scrollbar { width: 8px; }
+  .sidebar::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+  .nav-list { list-style: none; padding: 0; margin: 0; }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    color: #303030;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    line-height: 20px;
+    user-select: none;
+  }
+  .nav-item:hover { background: rgba(0,0,0,0.05); }
+  .nav-item.active { background: #fafafa; color: #303030; }
+  .nav-item .nav-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-item .nav-icon svg { width: 16px; height: 16px; fill: #4a4a4a; }
+  .nav-item .chevron {
+    margin-left: auto;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-item .chevron svg { width: 12px; height: 12px; fill: #616161; }
+
+  .nav-section-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #616161;
+    padding: 14px 8px 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-section-label .chevron { margin-left: 4px; }
+  .nav-section-label .chevron svg { width: 10px; height: 10px; fill: #616161; }
+
+  /* App row with image and selected dot */
+  .nav-app {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    color: #303030;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    position: relative;
+  }
+  .nav-app .app-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .nav-app .app-icon img { width: 100%; height: 100%; object-fit: cover; }
+  .nav-app .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #303030;
+    margin-left: auto;
+  }
+  .nav-app:hover { background: rgba(0,0,0,0.05); }
+
+  .nav-sub {
+    list-style: none;
+    padding: 0 0 0 30px;
+    margin: 0;
+  }
+  .nav-sub li {
+    padding: 6px 8px;
+    font-size: 13px;
+    color: #303030;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 450;
+  }
+  .nav-sub li:hover { background: rgba(0,0,0,0.05); }
+  .nav-sub li.active { background: #fafafa; font-weight: 550; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding-top: 12px;
+  }
+  .footer-settings {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 8px;
+    border-radius: 6px;
+    color: #303030;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .footer-settings:hover { background: rgba(0,0,0,0.05); }
+  .footer-settings svg { width: 16px; height: 16px; fill: #4a4a4a; }
+
+  /* ========== MAIN ========== */
+  .main {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+  }
+  .main::-webkit-scrollbar { width: 12px; }
+  .main::-webkit-scrollbar-thumb { background: #b5b5b5; border-radius: 6px; border: 3px solid var(--p-bg); }
+
+  .app-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--p-bg);
+  }
+  .app-header .app-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .app-header .app-logo img { width: 100%; height: 100%; object-fit: cover; }
+  .app-header h1 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #303030;
+  }
+  .app-header .more {
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a4a4a;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .app-header .more:hover { background: rgba(0,0,0,0.05); }
+
+  /* Settings layout */
+  .settings-layout {
+    display: flex;
+    gap: 16px;
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .settings-panel {
+    width: 220px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    flex-shrink: 0;
+    box-shadow: var(--p-shadow-100);
+  }
+  .settings-search {
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .settings-search input {
+    width: 100%;
+    height: 32px;
+    border: 1px solid #8a8a8a;
+    border-radius: 8px;
+    padding: 0 8px 0 30px;
+    font-family: inherit;
+    font-size: 13px;
+    background: #fdfdfd;
+    color: #303030;
+  }
+  .settings-search svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    fill: #616161;
+  }
+  .settings-group-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #616161;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 14px 8px 4px;
+  }
+  .settings-list { list-style: none; margin: 0; padding: 0; }
+  .settings-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #303030;
+    font-weight: 450;
+    line-height: 18px;
+  }
+  .settings-list li:hover { background: #f7f7f7; }
+  .settings-list li.active { background: #f1f1f1; font-weight: 550; }
+  .settings-list svg { width: 16px; height: 16px; fill: #4a4a4a; flex-shrink: 0; }
+
+  /* Content cards */
+  .content {
+    flex: 1;
+    min-width: 0;
+  }
+  .content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .content-header h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 650;
+    color: #303030;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 0;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 550;
+    color: #303030;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: var(--p-shadow-button);
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn:hover { background: #fafafa; }
+  .btn:active { background: #f1f1f1; }
+
+  .btn-primary {
+    background: #303030;
+    color: #fff;
+    box-shadow: 0 -.0625rem 0 .0625rem rgba(0,0,0,.8) inset, 0 0 0 .0625rem #303030 inset, 0 .03125rem 0 .09375rem rgba(255,255,255,.25) inset;
+  }
+  .btn-primary:hover { background: #1a1a1a; }
+  .btn-primary:active { background: #1a1a1a; }
+
+  .view[hidden] { display: none; }
+  .card[hidden] { display: none; }
+  .app-page[hidden] { display: none; }
+
+  /* ====== Home page ====== */
+  .app-page {
+    padding: 0 20px 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .app-header {
+    max-width: 1080px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .home-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0 20px;
+    gap: 16px;
+  }
+  .home-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .home-brand-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: #46b3a1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .home-brand-icon img { width: 100%; height: 100%; object-fit: cover; }
+  .home-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .brand-name {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a8276;
+    letter-spacing: -0.01em;
+  }
+  .brand-sub {
+    font-size: 16px;
+    font-weight: 600;
+    color: #46b3a1;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+  .home-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .bell-btn {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #fff;
+    border: 0;
+    box-shadow: var(--p-shadow-button);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bell-btn svg { width: 16px; height: 16px; fill: #303030; }
+  .bell-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #303030;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 10px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  /* Setup guide */
+  .setup-guide { padding: 16px 20px 20px; }
+  .setup-guide-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .setup-progress {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #303030;
+  }
+  .wand-icon { width: 20px; height: 20px; display: inline-block; }
+  .setup-guide-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .icon-btn-light {
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #4a4a4a;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .icon-btn-light:hover { background: #f1f1f1; }
+  .icon-btn-light img { width: 20px; height: 20px; display: block; }
+  .setup-title {
+    font-size: 14px;
+    font-weight: 650;
+    color: #303030;
+    margin-bottom: 4px;
+  }
+  .setup-subtitle {
+    font-size: 13px;
+    color: #616161;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .task-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .task {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 8px;
+    border-radius: 8px;
+  }
+  .task-label {
+    font-size: 13px;
+    color: #303030;
+    line-height: 20px;
+    flex: 1;
+  }
+  .task-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0;
+    position: relative;
+  }
+  .task-icon img { width: 20px; height: 20px; display: block; }
+  .task-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid #1a1c1d;
+    color: #1a1c1d;
+    font-size: 11px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+    background: #fff;
+  }
+
+  /* Stateful task icons: pending (number), active (dashed), complete (filled tick) */
+  .num-bullet {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid #1a1c1d;
+    color: #1a1c1d;
+    font-size: 11px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+    background: #fff;
+  }
+  .task .active-icon, .task .complete-icon { display: none; }
+  .task.task-active .num-bullet { display: none; }
+  .task.task-active .active-icon { display: block; }
+  .task.task-active .complete-icon { display: none; }
+  .task.task-complete .num-bullet { display: none; }
+  .task.task-complete .active-icon { display: none; }
+  .task.task-complete .complete-icon { display: block; }
+
+  /* Body / label visibility based on state */
+  .task .task-body { display: none; }
+  .task.task-active .task-body { display: block; }
+  .task.task-active > .task-label { display: none; }
+  .task.task-complete .task-body { display: none; }
+  .task[data-step="3"].task-complete { cursor: pointer; }
+  .task[data-step="3"].task-complete:hover { background: #f7f7f7; }
+  .task-active {
+    background: #f1f1f1;
+    padding: 14px 8px;
+  }
+  .task-body { flex: 1; }
+  .task-title {
+    font-size: 13px;
+    font-weight: 650;
+    color: #303030;
+    margin-bottom: 4px;
+    line-height: 20px;
+  }
+  .task-desc {
+    font-size: 13px;
+    color: #616161;
+    margin-bottom: 12px;
+    line-height: 18px;
+  }
+  .task-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .task-dismiss {
+    color: #005bd3;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .task-dismiss:hover { text-decoration: underline; }
+
+  /* Dashboard */
+  .dashboard { padding: 18px 20px 20px; }
+  .dashboard-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .dashboard-title {
+    font-size: 14px;
+    font-weight: 650;
+    color: #303030;
+  }
+  .dashboard-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .dashboard-range svg { width: 14px; height: 14px; margin-right: 4px; fill: #4a4a4a; }
+  .metric-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .metric {
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    padding: 12px 14px;
+    background: #fff;
+  }
+  .metric-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #303030;
+    text-decoration: underline;
+    text-decoration-color: #b5b5b5;
+    text-underline-offset: 2px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .metric-inline-icon {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    object-fit: cover;
+  }
+  .metric-value {
+    font-size: 18px;
+    font-weight: 650;
+    color: #303030;
+  }
+  .metric-delta {
+    font-size: 12px;
+    font-weight: 450;
+    color: #616161;
+    margin-left: 4px;
+  }
+  .trust-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #303030;
+    line-height: 20px;
+  }
+  .trust-val { color: #616161; }
+  .status-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .status-cell {
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    padding: 12px 14px;
+    background: #fff;
+  }
+  .status-cell-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #303030;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .status-extra { margin-top: 6px; }
+  .badge-warn {
+    background: #fff8db;
+    color: #4f4700;
+  }
+  .badge.on::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #047b5d;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  .badge.badge-warn::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffb800;
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  /* ====== Domain setup ====== */
+  .domain-hero { padding: 24px 24px 20px; }
+  .domain-hero-body { max-width: 640px; }
+  .domain-hero-title {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 650;
+    color: #303030;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .domain-hero-title .bolt { color: #ffb800; font-size: 22px; }
+  .domain-hero-sub {
+    margin: 0 0 16px;
+    font-size: 13px;
+    color: #616161;
+    line-height: 18px;
+  }
+  .domain-search {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .domain-search-input {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fdfdfd;
+    border: 1px solid #8a8a8a;
+    border-radius: 8px;
+    padding: 0 12px 0 32px;
+    height: 36px;
+  }
+  .domain-search-input:focus-within {
+    border-color: #005bd3;
+    box-shadow: 0 0 0 2px #005bd3;
+  }
+  .domain-search-input svg {
+    position: absolute;
+    left: 10px;
+    width: 14px;
+    height: 14px;
+    fill: #616161;
+  }
+  .domain-search-input input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    height: 100%;
+    font-family: inherit;
+    font-size: 13px;
+    color: #303030;
+    min-width: 0;
+  }
+  .domain-search-input .tld-suffix {
+    color: #616161;
+    font-size: 13px;
+    font-weight: 550;
+    margin-left: 4px;
+    user-select: none;
+  }
+  .domain-search .btn { height: 36px; padding: 0 18px; }
+  .domain-tips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .tip-chip {
+    background: #f1f1f1;
+    color: #616161;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .domain-hero-titlerow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .domain-hero-titlerow .domain-hero-title { margin: 0; }
+
+  /* Result card */
+  .result-card { padding: 16px 20px; border: 1px solid #c5d0ff; background: #fafbff; }
+  .register-trigger { height: 32px; }
+
+  /* Suggestions list */
+  .suggestions-card { padding: 0; }
+  .suggestions-header {
+    padding: 14px 20px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #616161;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .suggestions-list { display: flex; flex-direction: column; }
+  .suggestion-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 20px;
+    border-top: 1px solid #ebebeb;
+  }
+  .suggestion-info { flex: 1; min-width: 0; }
+  .suggestion-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 550;
+    color: #303030;
+    margin-bottom: 2px;
+    flex-wrap: wrap;
+  }
+  .suggestion-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #616161;
+  }
+  .suggestion-action {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .suggestion-price { text-align: right; line-height: 1.2; }
+  .suggestion-price .now {
+    font-size: 14px;
+    font-weight: 600;
+    color: #303030;
+    display: block;
+  }
+  .suggestion-price .then { font-size: 11px; color: #616161; }
+  .result-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .result-info { flex: 1; min-width: 0; }
+  .result-domain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 650;
+    color: #303030;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .result-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #616161;
+  }
+  .meta-sep { color: #b5b5b5; }
+  .dot-available {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #047b5d;
+    display: inline-block;
+  }
+  .badge-free {
+    background: #cdfed4;
+    color: #014b40;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 2px 8px;
+    line-height: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .badge-free sup { font-size: 8px; }
+  .result-action {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .result-price { text-align: right; line-height: 1.2; }
+  .price-now { font-size: 16px; font-weight: 650; color: #303030; display: block; }
+  .price-then { font-size: 11px; color: #616161; }
+
+  /* Register card */
+  .register-card { padding: 20px 24px; }
+  .register-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    color: #616161;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .register-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 650;
+    color: #303030;
+    margin-bottom: 4px;
+  }
+  .register-price-line {
+    font-size: 12px;
+    color: #616161;
+    margin-bottom: 16px;
+  }
+  .register-form { display: flex; flex-direction: column; gap: 12px; }
+  .form-row { display: flex; gap: 12px; }
+  .form-row.two-col .field { flex: 1; }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #303030;
+  }
+  .field input {
+    height: 32px;
+    border: 1px solid #8a8a8a;
+    border-radius: 8px;
+    padding: 0 10px;
+    font-family: inherit;
+    font-size: 13px;
+    background: #fdfdfd;
+    color: #303030;
+    outline: 0;
+  }
+  .field input:focus {
+    border-color: #005bd3;
+    box-shadow: 0 0 0 2px #005bd3;
+  }
+  .consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: #303030;
+    line-height: 18px;
+    margin-top: 4px;
+  }
+  .consent input { margin-top: 2px; accent-color: #303030; }
+  .consent a { color: #005bd3; text-decoration: underline; }
+  .register-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  /* Success card */
+  .success-card { overflow: hidden; padding: 0; }
+  .success-header {
+    background: linear-gradient(90deg, #cdfed4 0%, #fafffb 70%, #ffffff 100%);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .success-check {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+  }
+  .success-check svg { width: 22px; height: 22px; }
+  .success-title { font-size: 16px; font-weight: 650; color: #014b40; }
+  .success-sub { font-size: 13px; color: #303030; margin-top: 2px; }
+  .success-body {
+    padding: 16px 24px;
+    font-size: 13px;
+    color: #303030;
+    line-height: 18px;
+    border-top: 1px solid #ebebeb;
+  }
+  .steps-intro {
+    color: #616161;
+    margin-bottom: 12px;
+  }
+  .steps-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .steps-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #303030;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .step-text { flex: 1; }
+  .step-text strong { font-weight: 600; color: #303030; }
+  .steps-footnote {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #ebebeb;
+    font-size: 12px;
+    color: #616161;
+    line-height: 18px;
+  }
+  .steps-footnote strong { color: #303030; font-weight: 600; }
+  .success-actions {
+    padding: 12px 24px 20px;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--p-shadow-100);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .card-title {
+    padding: 14px 16px 10px;
+    font-size: 13px;
+    font-weight: 650;
+    color: #303030;
+  }
+
+  .row {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 16px;
+    gap: 16px;
+    border-top: 1px solid #ebebeb;
+  }
+  .row:first-of-type { border-top: 0; }
+  .row.clickable { cursor: pointer; }
+  .row.clickable:hover { background: #fafafa; }
+
+  .row-main { flex: 1; min-width: 0; }
+  .row-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 550;
+    color: #303030;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .row-desc {
+    font-size: 13px;
+    color: #616161;
+    font-weight: 450;
+    line-height: 18px;
+  }
+  .row-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+    align-items: center;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 550;
+    line-height: 18px;
+    background: #f1f1f1;
+    color: #303030;
+  }
+  .badge.on { background: var(--p-bg-fill-success-secondary); color: var(--p-text-success); }
+  .badge.off { background: #f1f1f1; color: #303030; }
+
+  .star-icon {
+    width: 22px;
+    height: 16px;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+  .star-icon img, .star-icon svg { width: 100%; height: 100%; }
+
+  .caret {
+    width: 8px;
+    height: 12px;
+    flex-shrink: 0;
+    color: #616161;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .caret svg { width: 8px; height: 12px; }
+
+  /* Floating chat */
+  .chat-fab {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #e3e3e3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 100;
+  }
+  .chat-fab svg { width: 22px; height: 22px; fill: #303030; }
+
+  /* Sales channels collapsed icon row */
+  .nav-collapsed-arrow svg { transform: rotate(0deg); }
+
+  /* Misc text helper */
+  .muted { color: #616161; font-weight: 450; }
+
+  /* Tiny utility: tight spacing inside settings rows */
+  .settings-list li.with-icon { padding-left: 8px; }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="icon-btn" aria-label="Toggle menu">
+      <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 2.75a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5h-12.5a.75.75 0 0 1-.75-.75"/><path fill-rule="evenodd" d="M1 8a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5h-12.5a.75.75 0 0 1-.75-.75"/><path fill-rule="evenodd" d="M1 13.25a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5h-12.5a.75.75 0 0 1-.75-.75"/></svg>
+    </button>
+    <div class="shopify-logo">
+      <img src="shopifylogo.png" alt="Shopify">
+    </div>
+  </div>
+  <div class="topbar-center">
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10.323 11.383a5.5 5.5 0 1 1-3.323-9.883 5.5 5.5 0 0 1 4.383 8.823l2.897 2.897a.749.749 0 1 1-1.06 1.06zm.677-4.383c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4"/></svg>
+      <input class="search-input" placeholder="Search" readonly>
+      <span class="search-shortcut">
+        <kbd class="kbd">CTRL</kbd><kbd class="kbd">K</kbd>
+      </span>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <button class="icon-btn" aria-label="Sidekick">
+      <svg viewBox="0 0 16 16"><path d="m8.943 12.05-.002.002c-.73.351-1.465.231-2.204-.105-.252-.114-.532-.083-.713.077a.47.47 0 0 0-.162.339.55.55 0 0 0 .146.377c.479.552 1.198.91 1.954.923.827.035 1.596-.417 2.027-1.07a.54.54 0 0 0 .096-.383.45.45 0 0 0-.202-.31c-.198-.13-.473-.117-.7.02q-.12.075-.24.13"/><path fill-rule="evenodd" d="M.893 3.951c-.06.196-.204.817-.204 1.655-.126.729-.078 1.454-.126 2.712l-.06 1.56c-.096 2.547 1.752 5.313 4.276 5.663 1.938.269 3.904.278 5.844.028l.218-.028c.24-.03.383-.049.509-.072 2.335-.424 4.043-3.002 4.074-5.374.002-.128-.003-.272-.012-.514l-.05-1.288c-.027-.722-.048-1.283-.097-1.75l.006-.142c.03-.65.023-.743-.05-1.17a5.6 5.6 0 0 0-.506-1.518c-.274-.521-.719-1.054-1.407-1.054l-.187-.193c-1.495-1.55-2.192-1.895-5.407-2.209-1.825-.057-2.68.23-3.804.78-1.071.523-2.162 1.245-2.551 1.778-.277.378-.376.838-.466 1.136m9.726.323c.711.067 1.364.129 1.883.05 0 0 .283.783.976 1.479l.224.22c.153.15.285.277.392.407q.025.183.044.412a2.3 2.3 0 0 0-.71-.201c-1.064-.076-1.896.336-2.747.758-.818.405-1.654.82-2.73.82-1.075 0-1.911-.415-2.729-.82-.851-.422-1.683-.834-2.746-.758a2.3 2.3 0 0 0-.686.189c.035-.411.083-.694.165-.943a3.8 3.8 0 0 1 1.178-1.735q.107-.044.223-.079l.413.015c-.05 1.316.268 2.192.46 2.247.156.044.378-.256.672-.654.105-.142.22-.297.344-.453.147-.186.511-.456 1.002-.738.092.668.28 1.08.408 1.116.157.045.379-.256.672-.653.106-.143.22-.298.344-.454q.145-.181.379-.334h.089c.275 0 .577.003.893.005.54.004 1.078.055 1.587.104m-8.657 7.426c.514 1.351 1.617 2.514 2.975 2.702 1.837.255 3.7.264 5.54.027l.197-.026c.266-.034.47-.065.47-.065 1.27-.23 2.299-1.356 2.8-2.64a3 3 0 0 1-.755.3c-.685.17-1.63-.077-2.678-.626-.364-.19-.643-.414-.904-.623-.475-.382-.89-.716-1.655-.716s-1.181.334-1.656.716c-.261.21-.54.433-.904.623-1.048.55-1.992.797-2.678.625a3 3 0 0 1-.752-.297m1.835-1.137a1.244 1.244 0 1 0 0-2.489 1.244 1.244 0 0 0 0 2.489m6.9-1.245a1.245 1.245 0 1 0 2.49 0 1.245 1.245 0 0 0-2.49 0"/></svg>
+    </button>
+    <button class="icon-btn notif" aria-label="Notifications">
+      <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="m5.252 12.424-2.446-.281c-1.855-.213-2.38-2.659-.778-3.616l.065-.038a2.89 2.89 0 0 0 1.407-2.48v-.509a4.5 4.5 0 0 1 9 0v.51c0 1.016.535 1.958 1.408 2.479l.065.038c1.602.957 1.076 3.403-.778 3.616l-2.543.292v.365a2.7 2.7 0 0 1-5.4 0zm3.9.076h-2.4v.3a1.2 1.2 0 1 0 2.4 0zm-3.152-1.5h4l3.024-.348a.452.452 0 0 0 .18-.837l-.065-.038a4.4 4.4 0 0 1-.674-.495l-.073-.067a4.4 4.4 0 0 1-1.392-3.205v-.51a3 3 0 1 0-6 0v.51a4.4 4.4 0 0 1-1.391 3.205l-.073.067a4.6 4.6 0 0 1-.674.495l-.065.038a.453.453 0 0 0 .18.838z"/></svg>
+      <span class="notif-badge">20</span>
+    </button>
+    <div class="user-menu" role="button">
+      <span class="avatar">MS</span>
+      <span class="name">My Store</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FRAME ============ -->
+<div class="frame">
+
+  <!-- ====== SIDEBAR ====== -->
+  <aside class="sidebar">
+    <ul class="nav-list">
+      <li><a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.344 1.692a2.25 2.25 0 0 1 3.312 0l3.854 4.19c.637.691.99 1.598.99 2.538v3.33a2.75 2.75 0 0 1-2.75 2.75h-1.75a1.5 1.5 0 0 1-1.5-1.5v-2h-1v2a1.5 1.5 0 0 1-1.5 1.5h-1.75a2.75 2.75 0 0 1-2.75-2.75v-3.33c0-.94.353-1.847.99-2.539zm2.208 1.016a.75.75 0 0 0-1.104 0l-3.854 4.189a2.25 2.25 0 0 0-.594 1.523v3.33c0 .69.56 1.25 1.25 1.25h1.75v-2a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v2h1.75c.69 0 1.25-.56 1.25-1.25v-3.33a2.25 2.25 0 0 0-.594-1.523l-3.854-4.19Z"/></svg></span>
+        Home
+      </a></li>
+      <li><a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.976 1.5a2.75 2.75 0 0 0-2.72 2.347l-.662 4.46a9 9 0 0 0-.094 1.282v1.661a3.25 3.25 0 0 0 3.25 3.25h6.5a3.25 3.25 0 0 0 3.25-3.25v-1.66q0-.645-.095-1.283l-.66-4.46a2.75 2.75 0 0 0-2.72-2.347h-6.05Zm-1.237 2.567a1.25 1.25 0 0 1 1.237-1.067h6.048c.62 0 1.146.454 1.237 1.067l.583 3.933h-2.484c-.538 0-1.015.344-1.185.855l-.159.474a.25.25 0 0 1-.237.171h-1.558a.25.25 0 0 1-.237-.17l-.159-.475a1.25 1.25 0 0 0-1.185-.855h-2.484zm-.738 5.433-.001.09v1.66c0 .966.784 1.75 1.75 1.75h6.5a1.75 1.75 0 0 0 1.75-1.75v-1.75h-2.46l-.1.303a1.75 1.75 0 0 1-1.66 1.197h-1.56a1.75 1.75 0 0 1-1.66-1.197l-.1-.303h-2.46Z"/></svg></span>
+        Orders
+      </a></li>
+      <li><a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.575 2.649a3.75 3.75 0 0 1 2.7-1.149h1.975a3.25 3.25 0 0 1 3.25 3.25v2.187c0 .883-.36 1.728-.996 2.34l-4.747 4.572a2.5 2.5 0 0 1-3.502-.033l-2.898-2.898a2.5 2.5 0 0 1-.108-3.418zm2.7.351a2.25 2.25 0 0 0-1.62.69l-4.327 4.488a1 1 0 0 0 .043 1.367l2.898 2.898a1 1 0 0 0 1.401.013l4.747-4.572a1.75 1.75 0 0 0 .533-1.259v-2.187c0-.966-.784-1.75-1.75-1.75h-1.925ZM7 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0"/></svg></span>
+        Products
+      </a></li>
+      <li><a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/><path d="M14 14.25c0 .414-.336.75-.75.75h-10.5a.75.75 0 0 1-.75-.75v-.5a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4z"/></svg></span>
+        Customers
+      </a></li>
+      <li><a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 2.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6m0 7.5a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9"/><path d="M2.5 12.75a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1-.75-.75"/></svg></span>
+        Marketing
+      </a></li>
+      <li><a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2 4.5a2.5 2.5 0 0 1 2.5-2.5h2.379a2.5 2.5 0 0 1 1.767.732l5.292 5.293a2.5 2.5 0 0 1 0 3.536l-2.379 2.379a2.5 2.5 0 0 1-3.535 0l-5.293-5.293a2.5 2.5 0 0 1-.731-1.767zm2.5-1c-.552 0-1 .448-1 1v2.379c0 .265.105.52.293.707l5.293 5.293a1 1 0 0 0 1.414 0l2.379-2.379a1 1 0 0 0 0-1.414l-5.293-5.293a1 1 0 0 0-.707-.293zM6 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/></svg></span>
+        Discounts
+      </a></li>
+      <li><a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3 4.75a2.75 2.75 0 0 1 2.75-2.75h4.5a2.75 2.75 0 0 1 2.75 2.75v6.5a2.75 2.75 0 0 1-2.75 2.75h-4.5a2.75 2.75 0 0 1-2.75-2.75zm2.75-1.25c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h4.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25z"/><path d="M5.75 5.75a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75M5.75 8a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75M6.5 9.5a.75.75 0 0 0 0 1.5h1a.75.75 0 0 0 0-1.5z"/></svg></span>
+        Content
+      </a></li>
+      <li><a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13M3 8a5 5 0 0 1 5-5c.7 0 1.473.74 2.108 2.226.272.633.49 1.378.642 2.024h-5.5a.75.75 0 0 0 0 1.5h5.756a13.6 13.6 0 0 1 0 2.5h-5.756a.75.75 0 0 0 0 1.5h5.5c-.152.646-.37 1.391-.642 2.024-.635 1.486-1.408 2.226-2.108 2.226a5 5 0 0 1-5-5"/></svg></span>
+        Markets
+      </a></li>
+      <li><a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 16 16"><path d="M3 2.75a.75.75 0 0 0-1.5 0v9a3.75 3.75 0 0 0 3.75 3.75h8a.75.75 0 0 0 0-1.5h-8a2.25 2.25 0 0 1-2.25-2.25z"/><path d="M14.03 4.78a.75.75 0 1 0-1.06-1.06l-3.22 3.22-1.72-1.72a.75.75 0 0 0-1.06 0l-2.5 2.5a.75.75 0 1 0 1.06 1.06l1.97-1.97 1.72 1.72a.75.75 0 0 0 1.06 0z"/></svg></span>
+        Analytics
+      </a></li>
+    </ul>
+
+    <div class="nav-section-label">
+      Sales channels
+      <span class="chevron"><svg viewBox="0 0 5 8"><path d="M0.953125 1.71092C0.698793 1.47778 0.681157 1.08257 0.914062 0.828107C1.1472 0.573776 1.54241 0.55614 1.79688 0.789045L4.79688 3.53904C4.92602 3.65743 5 3.82479 5 3.99998C5 4.17517 4.92602 4.34254 4.79688 4.46092L1.79688 7.21092L1.69629 7.28612C1.44691 7.43592 1.11827 7.39463 0.914063 7.17186C0.710324 6.94926 0.697796 6.61905 0.868164 6.38377L0.953125 6.28905L3.4502 3.99998L0.953125 1.71092Z"/></svg></span>
+    </div>
+    <ul class="nav-list">
+      <li><a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 4.75a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v6.5a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3zm3-1.5a1.5 1.5 0 0 0-1.5 1.5v6.5c0 .828.672 1.5 1.5 1.5h8a1.5 1.5 0 0 0 1.5-1.5v-6.5a1.5 1.5 0 0 0-1.5-1.5z"/><path d="M5.25 5.5a.75.75 0 0 0-.75.75v3.5c0 .414.336.75.75.75h5.5a.75.75 0 0 0 .75-.75v-3.5a.75.75 0 0 0-.75-.75z"/></svg></span>
+        Online Store
+      </a></li>
+    </ul>
+
+    <div class="nav-section-label">
+      Apps
+      <span class="chevron"><svg viewBox="0 0 5 8"><path d="M0.953125 1.71092C0.698793 1.47778 0.681157 1.08257 0.914062 0.828107C1.1472 0.573776 1.54241 0.55614 1.79688 0.789045L4.79688 3.53904C4.92602 3.65743 5 3.82479 5 3.99998C5 4.17517 4.92602 4.34254 4.79688 4.46092L1.79688 7.21092L1.69629 7.28612C1.44691 7.43592 1.11827 7.39463 0.914063 7.17186C0.710324 6.94926 0.697796 6.61905 0.868164 6.38377L0.953125 6.28905L3.4502 3.99998L0.953125 1.71092Z"/></svg></span>
+    </div>
+    <div class="nav-app" data-page="home">
+      <span class="app-icon">
+        <img src="judgelogo.png" alt="Judge.me">
+      </span>
+      Judge.me Reviews
+      <span class="dot"></span>
+    </div>
+    <ul class="nav-sub">
+      <li data-page="reviews">Reviews</li>
+      <li data-page="settings">Settings</li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="footer-settings">
+        <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.823 1.677a1.5 1.5 0 0 1 2.354 0l.566.728a.5.5 0 0 0 .515.18l.892-.234a1.5 1.5 0 0 1 1.847 1.398l.03.93a.5.5 0 0 0 .31.45l.86.36a1.5 1.5 0 0 1 .724 2.247l-.51.785a.5.5 0 0 0 0 .545l.51.785a1.5 1.5 0 0 1-.724 2.246l-.86.36a.5.5 0 0 0-.31.45l-.03.93a1.5 1.5 0 0 1-1.847 1.4l-.892-.235a.5.5 0 0 0-.515.18l-.566.728a1.5 1.5 0 0 1-2.354 0l-.566-.728a.5.5 0 0 0-.515-.18l-.892.234a1.5 1.5 0 0 1-1.847-1.398l-.03-.93a.5.5 0 0 0-.31-.45l-.86-.36a1.5 1.5 0 0 1-.724-2.247l.51-.785a.5.5 0 0 0 0-.545l-.51-.785a1.5 1.5 0 0 1 .724-2.246l.86-.36a.5.5 0 0 0 .31-.45l.03-.93a1.5 1.5 0 0 1 1.847-1.4l.892.235a.5.5 0 0 0 .515-.18zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
+        Settings
+      </div>
+    </div>
+  </aside>
+
+  <!-- ====== MAIN ====== -->
+  <main class="main">
+    <div class="app-header">
+      <span class="app-logo">
+        <img src="judgelogo.png" alt="Judge.me">
+      </span>
+      <h1>Judge.me Reviews</h1>
+      <button class="more" aria-label="More">⋯</button>
+    </div>
+
+    <!-- ============ HOME PAGE ============ -->
+    <div class="app-page" data-page="home">
+      <div class="home-hero">
+        <div class="home-brand">
+          <span class="home-brand-icon">
+            <img src="judgelogo.png" alt="">
+          </span>
+          <span class="home-brand-text">
+            <span class="brand-name">Judge.me</span>
+            <span class="brand-sub">REVIEWS</span>
+          </span>
+        </div>
+        <div class="home-hero-actions">
+          <button class="btn">Request improvements</button>
+          <button class="bell-btn" aria-label="Notifications">
+            <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="m5.252 12.424-2.446-.281c-1.855-.213-2.38-2.659-.778-3.616l.065-.038a2.89 2.89 0 0 0 1.407-2.48v-.509a4.5 4.5 0 0 1 9 0v.51c0 1.016.535 1.958 1.408 2.479l.065.038c1.602.957 1.076 3.403-.778 3.616l-2.543.292v.365a2.7 2.7 0 0 1-5.4 0zm3.9.076h-2.4v.3a1.2 1.2 0 1 0 2.4 0zm-3.152-1.5h4l3.024-.348a.452.452 0 0 0 .18-.837l-.065-.038a4.4 4.4 0 0 1-.674-.495l-.073-.067a4.4 4.4 0 0 1-1.392-3.205v-.51a3 3 0 1 0-6 0v.51a4.4 4.4 0 0 1-1.391 3.205l-.073.067a4.6 4.6 0 0 1-.674.495l-.065.038a.453.453 0 0 0 .18.838z"/></svg>
+            <span class="bell-badge">7</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Setup guide -->
+      <div class="card setup-guide">
+        <div class="setup-guide-top">
+          <span class="setup-progress">
+            <img src="assets/wand_minor.svg" alt="" class="wand-icon">
+            <strong id="setupProgressLabel">2 of 7 tasks complete</strong>
+          </span>
+          <div class="setup-guide-controls">
+            <button class="icon-btn-light" aria-label="More">
+              <img src="assets/horizontal-dots_minor.svg" alt="">
+            </button>
+            <button class="icon-btn-light" aria-label="Collapse">
+              <img src="assets/setup-chevron-up_minor.svg" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="setup-title">Setup guide</div>
+        <div class="setup-subtitle">Welcome to Judge.me. Let's get your store up and running.</div>
+
+        <ul class="task-list">
+          <li class="task task-complete">
+            <span class="task-icon" aria-hidden="true">
+              <img src="assets/circle-tick_major.svg" alt="">
+            </span>
+            <span class="task-label">Install Review Widget and Star Rating Badge</span>
+          </li>
+          <li class="task task-complete">
+            <span class="task-icon" aria-hidden="true">
+              <img src="assets/circle-tick_major.svg" alt="">
+            </span>
+            <span class="task-label">Customize the review widget</span>
+          </li>
+
+          <li class="task task-active" data-step="3">
+            <span class="task-icon" aria-hidden="true">
+              <span class="num-bullet">3</span>
+              <img class="active-icon" src="assets/ellipse_231.svg" alt="">
+              <img class="complete-icon" src="assets/circle-tick_major.svg" alt="">
+            </span>
+            <span class="task-label">Setup branded domain</span>
+            <div class="task-body">
+              <div class="task-title">Setup branded domain</div>
+              <div class="task-desc">Sell more and collect more reviews with free .store domain for one year.</div>
+              <div class="task-actions">
+                <button class="btn btn-primary" id="setupDomainBtn">Setup now</button>
+                <a href="#" class="task-dismiss" data-dismiss-step="3" onclick="event.preventDefault()">Dismiss</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="task" data-step="4">
+            <span class="task-icon" aria-hidden="true">
+              <span class="num-bullet">4</span>
+              <img class="active-icon" src="assets/ellipse_231.svg" alt="">
+              <img class="complete-icon" src="assets/circle-tick_major.svg" alt="">
+            </span>
+            <span class="task-label">Add store logo and check email styling</span>
+            <div class="task-body">
+              <div class="task-title">Add store logo and check email styling</div>
+              <div class="task-desc">Update your branding by uploading your logo and previewing how it looks in your emails.</div>
+              <div class="task-actions">
+                <button class="btn btn-primary">Edit email template styling</button>
+              </div>
+            </div>
+          </li>
+          <li class="task" data-step="5">
+            <span class="task-icon" aria-hidden="true">
+              <span class="num-bullet">5</span>
+              <img class="complete-icon" src="assets/circle-tick_major.svg" alt="">
+            </span>
+            <span class="task-label">Review request schedule</span>
+          </li>
+          <li class="task" data-step="6">
+            <span class="task-icon" aria-hidden="true">
+              <span class="num-bullet">6</span>
+              <img class="complete-icon" src="assets/circle-tick_major.svg" alt="">
+            </span>
+            <span class="task-label">Personalize review request email</span>
+          </li>
+          <li class="task" data-step="7">
+            <span class="task-icon" aria-hidden="true">
+              <span class="num-bullet">7</span>
+              <img class="complete-icon" src="assets/circle-tick_major.svg" alt="">
+            </span>
+            <span class="task-label">Grab your free Judge.me Awesome trial</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Dashboard -->
+      <div class="card dashboard">
+        <div class="dashboard-top">
+          <div class="dashboard-title">Welcome to Judge.me</div>
+          <div class="dashboard-actions">
+            <button class="btn dashboard-range">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.75 1a.75.75 0 0 1 .75.75v.5h3v-.5a.75.75 0 0 1 1.5 0v.5h.25a2.75 2.75 0 0 1 2.75 2.75v7.75a2.75 2.75 0 0 1-2.75 2.75h-6.5a2.75 2.75 0 0 1-2.75-2.75v-7.75a2.75 2.75 0 0 1 2.75-2.75h.25v-.5a.75.75 0 0 1 .75-.75M3 5h10v7.75c0 .69-.56 1.25-1.25 1.25h-6.5c-.69 0-1.25-.56-1.25-1.25z"/></svg>
+              Last 30 days
+            </button>
+            <button class="btn">View reports</button>
+          </div>
+        </div>
+        <div class="metric-row">
+          <div class="metric">
+            <div class="metric-label">Reviews</div>
+            <div class="metric-value">0 <span class="metric-delta muted">— 0%</span></div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Average rating</div>
+            <div class="metric-value">0 <span class="metric-delta muted">— 0%</span></div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Requests sent</div>
+            <div class="metric-value">0 <span class="metric-delta muted">— 0%</span></div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Revenue from <img src="judgelogo.png" alt="" class="metric-inline-icon"></div>
+            <div class="metric-value">$0 <span class="metric-delta muted">— 0%</span></div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Trust scores</div>
+            <div class="trust-row">
+              <span>Transparency</span>
+              <span class="trust-val">0%</span>
+            </div>
+            <div class="trust-row">
+              <span>Authenticity</span>
+              <span class="trust-val">0%</span>
+            </div>
+          </div>
+        </div>
+        <div class="status-row">
+          <div class="status-cell">
+            <div class="status-cell-title">Tasks <span class="badge on">You're all caught up!</span></div>
+          </div>
+          <div class="status-cell">
+            <div class="status-cell-title">Widgets <span class="badge on">Embed enabled</span></div>
+            <div class="status-extra"><span class="badge badge-warn">0 active</span></div>
+          </div>
+          <div class="status-cell">
+            <div class="status-cell-title">Requests <span class="badge on">Requests enabled</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ REVIEWS PAGE (placeholder) ============ -->
+    <div class="app-page" data-page="reviews" hidden>
+      <div class="content-header" style="padding: 20px;">
+        <h2>Reviews</h2>
+      </div>
+      <div class="card" style="padding: 24px; margin: 0 20px;">
+        <div class="row-desc">Your reviews will appear here.</div>
+      </div>
+    </div>
+
+    <!-- ============ SETTINGS PAGE ============ -->
+    <div class="app-page" data-page="settings" hidden>
+    <div class="settings-layout">
+      <!-- ===== Settings panel ===== -->
+      <aside class="settings-panel">
+        <div class="settings-search">
+          <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10.323 11.383a5.5 5.5 0 1 1-3.323-9.883 5.5 5.5 0 0 1 4.383 8.823l2.897 2.897a.749.749 0 1 1-1.06 1.06zm.677-4.383c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4"/></svg>
+          <input type="text" placeholder="Search (Ctrl + Shift + F)">
+        </div>
+
+        <div class="settings-group-title">REVIEW COLLECTION</div>
+        <ul class="settings-list">
+          <li>
+            <svg viewBox="0 0 16 16"><path d="M8.75 1.75a.75.75 0 0 0-1.5 0v6.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72z"/><path d="M3 11.75a.75.75 0 0 0-1.5 0v.5A2.75 2.75 0 0 0 4.25 15h7.5a2.75 2.75 0 0 0 2.75-2.75v-.5a.75.75 0 0 0-1.5 0v.5c0 .69-.56 1.25-1.25 1.25h-7.5c-.69 0-1.25-.56-1.25-1.25z"/></svg>
+            Import reviews
+          </li>
+          <li class="active" data-view="request">
+            <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14.5 8a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0m-3.97-2.03a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 0 1-1.06 0l-1.5-1.5a.75.75 0 1 1 1.06-1.06l.97.97 2.47-2.47a.75.75 0 0 1 1.06 0"/></svg>
+            Request reviews
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16"><path d="M5.75 1a.75.75 0 0 1 .75.75v.5h3v-.5a.75.75 0 0 1 1.5 0v.5h.25a2.75 2.75 0 0 1 2.75 2.75v7.75a2.75 2.75 0 0 1-2.75 2.75h-6.5a2.75 2.75 0 0 1-2.75-2.75v-7.75a2.75 2.75 0 0 1 2.75-2.75h.25v-.5a.75.75 0 0 1 .75-.75M3 5h10v7.75c0 .69-.56 1.25-1.25 1.25h-6.5c-.69 0-1.25-.56-1.25-1.25z"/></svg>
+            Request scheduling
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 4.75a2.25 2.25 0 0 1 2.25-2.25h6.5a2.25 2.25 0 0 1 2.25 2.25v6.5a2.25 2.25 0 0 1-2.25 2.25h-6.5a2.25 2.25 0 0 1-2.25-2.25zm2.25-.75c-.414 0-.75.336-.75.75v.379l3.5 2.187 3.5-2.187v-.379c0-.414-.336-.75-.75-.75zm6.25 2.918-3.103 1.939a.75.75 0 0 1-.794 0l-3.103-1.939v4.332c0 .414.336.75.75.75h6.5c.414 0 .75-.336.75-.75z"/></svg>
+            Email templates
+          </li>
+          <li data-view="domain">
+            <svg viewBox="0 0 16 16" fill="none" stroke="#4a4a4a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="8" cy="8" r="6.5"/>
+              <ellipse cx="8" cy="8" rx="3" ry="6.5"/>
+              <line x1="1.5" y1="8" x2="14.5" y2="8"/>
+            </svg>
+            Domain setup
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.5 1.5a1.5 1.5 0 0 0-1.5 1.5v.25h-1a2.5 2.5 0 0 0-2.5 2.5v6a2.5 2.5 0 0 0 2.5 2.5h6a2.5 2.5 0 0 0 2.5-2.5v-6a2.5 2.5 0 0 0-2.5-2.5h-1v-.25a1.5 1.5 0 0 0-1.5-1.5zm3 4.25v-.25a2.5 2.5 0 0 1 1 2v6a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h1v.25a1.5 1.5 0 0 0 1.5 1.5h2a1.5 1.5 0 0 0 1.5-1.5"/></svg>
+            Product management
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16"><path d="M8 1.5 2 4.5l6 3 6-3z"/><path d="m2 8 6 3 6-3M2 11.5l6 3 6-3"/></svg>
+            Bundles
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16"><path d="M3 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0M3 8a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0M3 11.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0"/><path d="M7.75 4.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75M7.75 8a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75M7.75 11.25a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75"/></svg>
+            Collection flow
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16"><path d="M6.46 2.27a1.5 1.5 0 0 1 3.08 0l.53 2.05a.5.5 0 0 0 .42.37l2.1.26c1.39.17 1.95 1.88.92 2.83l-1.56 1.44a.5.5 0 0 0-.15.49l.42 2.07c.28 1.37-1.18 2.42-2.4 1.74l-1.82-1.01a.5.5 0 0 0-.5 0l-1.82 1.01c-1.22.68-2.68-.37-2.4-1.74l.42-2.07a.5.5 0 0 0-.15-.49l-1.56-1.44c-1.03-.95-.47-2.66.92-2.83l2.1-.26a.5.5 0 0 0 .42-.37z"/></svg>
+            Publishing and moderation
+          </li>
+        </ul>
+
+        <div class="settings-group-title">REVIEW DISPLAY</div>
+        <ul class="settings-list">
+          <li>
+            <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.5 9.91 5.36 14 6.05l-2.94 2.87.69 4.08L8 11.04l-3.75 1.96.69-4.08L2 6.05l4.09-.69z"/></svg>
+            Widgets
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16"><path d="M2 4.5C2 3.12 3.12 2 4.5 2S7 3.12 7 4.5 5.88 7 4.5 7 2 5.88 2 4.5M9 4.5C9 3.12 10.12 2 11.5 2S14 3.12 14 4.5 12.88 7 11.5 7 9 5.88 9 4.5M2 11.5C2 10.12 3.12 9 4.5 9S7 10.12 7 11.5 5.88 14 4.5 14 2 12.88 2 11.5M9 11.5C9 10.12 10.12 9 11.5 9S14 10.12 14 11.5 12.88 14 11.5 14 9 12.88 9 11.5"/></svg>
+            Product groups
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16"><path d="M12 2.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4M4 6.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4M12 9.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/><path d="m5.5 7.5 5-3M5.5 9.5l5 3" stroke="#4a4a4a" stroke-width="1"/></svg>
+            Social sharing
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13M3 8a5 5 0 0 1 5-5c.7 0 1.473.74 2.108 2.226.272.633.49 1.378.642 2.024h-5.5a.75.75 0 0 0 0 1.5h5.756a13.6 13.6 0 0 1 0 2.5h-5.756a.75.75 0 0 0 0 1.5h5.5c-.152.646-.37 1.391-.642 2.024-.635 1.486-1.408 2.226-2.108 2.226a5 5 0 0 1-5-5"/></svg>
+            Google and SEO
+          </li>
+        </ul>
+
+        <div class="settings-group-title">DISCOUNT AND REWARDS</div>
+        <ul class="settings-list">
+          <li>
+            <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2 4.5a2.5 2.5 0 0 1 2.5-2.5h2.379a2.5 2.5 0 0 1 1.767.732l5.292 5.293a2.5 2.5 0 0 1 0 3.536l-2.379 2.379a2.5 2.5 0 0 1-3.535 0l-5.293-5.293a2.5 2.5 0 0 1-.731-1.767zm4 1a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/></svg>
+            Coupons
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16"><path d="M8 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6M3 12a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v1H3z"/></svg>
+            Referrals
+          </li>
+        </ul>
+
+        <div class="settings-group-title">INTEGRATIONS</div>
+        <ul class="settings-list">
+          <li>
+            <svg viewBox="0 0 16 16"><path d="M6 1.5a1.5 1.5 0 0 0-1.5 1.5v1h-1A2.5 2.5 0 0 0 1 6.5v6A2.5 2.5 0 0 0 3.5 15h9a2.5 2.5 0 0 0 2.5-2.5v-6A2.5 2.5 0 0 0 12.5 4h-1V3A1.5 1.5 0 0 0 10 1.5zM10 4H6V3h4z"/></svg>
+            Integrations
+          </li>
+        </ul>
+
+        <div class="settings-group-title">GENERAL</div>
+        <ul class="settings-list">
+          <li>
+            <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3.25 2.5a.75.75 0 0 0-.75.75v9.5c0 .414.336.75.75.75h9.5a.75.75 0 0 0 .75-.75v-9.5a.75.75 0 0 0-.75-.75z"/></svg>
+            Plan
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16"><path d="M8 1.5 9.91 5.36 14 6.05l-2.94 2.87.69 4.08L8 11.04l-3.75 1.96.69-4.08L2 6.05l4.09-.69z"/></svg>
+            Branding
+          </li>
+        </ul>
+      </aside>
+
+      <!-- ===== Content ===== -->
+      <section class="content">
+       <div class="view" data-view="request">
+        <div class="content-header">
+          <h2>Request reviews</h2>
+          <button class="btn">View review requests</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Email review requests</div>
+
+          <div class="row">
+            <div class="row-main">
+              <div class="row-title">Schedule requests for previous Shopify orders</div>
+              <div class="row-desc">Schedule review requests in batch for orders placed before you installed Judge.me.</div>
+            </div>
+            <div class="row-actions">
+              <button class="btn">Schedule requests</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row-main">
+              <div class="row-title">Send manual requests</div>
+              <div class="row-desc">Send manual review requests to a single customer or multiple customers via spreadsheet CSV file.</div>
+            </div>
+            <div class="row-actions">
+              <button class="btn">Single request</button>
+              <button class="btn">Multiple requests</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Collection channels</div>
+
+          <div class="row clickable">
+            <div class="row-main">
+              <div class="row-title">
+                Manage email review requests
+                <span class="badge on">On</span>
+              </div>
+              <div class="row-desc">Collect reviews via email on autopilot.</div>
+            </div>
+            <div class="row-actions">
+              <span class="caret">
+                <svg viewBox="0 0 5 8"><path d="M0.953125 1.71092C0.698793 1.47778 0.681157 1.08257 0.914062 0.828107C1.1472 0.573776 1.54241 0.55614 1.79688 0.789045L4.79688 3.53904C4.92602 3.65743 5 3.82479 5 3.99998C5 4.17517 4.92602 4.34254 4.79688 4.46092L1.79688 7.21092L1.69629 7.28612C1.44691 7.43592 1.11827 7.39463 0.914063 7.17186C0.710324 6.94926 0.697796 6.61905 0.868164 6.38377L0.953125 6.28905L3.4502 3.99998L0.953125 1.71092Z" fill="#616161"/></svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row-main">
+              <div class="row-title">Links, QR codes and point of sale review collection</div>
+              <div class="row-desc">Share QR codes or links in print, point of sale material, communications or on receipts so your customers can write a review.</div>
+            </div>
+            <div class="row-actions">
+              <button class="btn">Manage</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row-main">
+              <div class="row-title">
+                SMS requests
+                <span class="badge off">Off</span>
+                <span class="star-icon">
+                  <img src="assets/badge-star-hollow-2026.svg" alt="">
+                </span>
+              </div>
+              <div class="row-desc">Integrate with third-party apps such as SMSBump or ConvertWay to send review requests via SMS.</div>
+            </div>
+            <div class="row-actions">
+              <button class="btn">Manage</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row-main">
+              <div class="row-title">
+                Push notifications
+                <span class="badge off">Off</span>
+                <span class="star-icon">
+                  <img src="assets/badge-star-hollow-2026.svg" alt="">
+                </span>
+              </div>
+              <div class="row-desc">Integrate with PushOwl to send review requests and remind customers to submit pictures.</div>
+            </div>
+            <div class="row-actions">
+              <button class="btn">Manage</button>
+            </div>
+          </div>
+
+          <div class="row clickable">
+            <div class="row-main">
+              <div class="row-title">
+                WhatsApp and email marketing integrations
+                <span class="star-icon">
+                  <img src="assets/badge-star-hollow-2026.svg" alt="">
+                </span>
+              </div>
+              <div class="row-desc">Send review requests via Klaviyo, Dondy, Reviewbit and others.</div>
+            </div>
+            <div class="row-actions">
+              <span class="caret">
+                <svg viewBox="0 0 5 8"><path d="M0.953125 1.71092C0.698793 1.47778 0.681157 1.08257 0.914062 0.828107C1.1472 0.573776 1.54241 0.55614 1.79688 0.789045L4.79688 3.53904C4.92602 3.65743 5 3.82479 5 3.99998C5 4.17517 4.92602 4.34254 4.79688 4.46092L1.79688 7.21092L1.69629 7.28612C1.44691 7.39463 1.11827 7.39463 0.914063 7.17186C0.710324 6.94926 0.697796 6.61905 0.868164 6.38377L0.953125 6.28905L3.4502 3.99998L0.953125 1.71092Z" fill="#616161"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+       </div>
+
+       <!-- ===== Domain setup view ===== -->
+       <div class="view" data-view="domain" hidden>
+        <div class="content-header">
+          <h2>Domain setup</h2>
+        </div>
+
+        <!-- Search hero -->
+        <div class="card domain-hero" id="domainSearchHero">
+          <div class="domain-hero-body">
+            <div class="domain-hero-titlerow">
+              <h3 class="domain-hero-title">Claim your free .store domain</h3>
+              <span class="badge-free">1<sup>st</sup> year free</span>
+            </div>
+            <p class="domain-hero-sub">Get a memorable, branded web address on the house, included with your Judge.me plan. Strengthen trust at checkout and in review request emails with a domain customers recognize.</p>
+            <form class="domain-search" id="domainSearchForm" autocomplete="off">
+              <div class="domain-search-input">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M10.323 11.383a5.5 5.5 0 1 1-3.323-9.883 5.5 5.5 0 0 1 4.383 8.823l2.897 2.897a.749.749 0 1 1-1.06 1.06zm.677-4.383c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4"/></svg>
+                <input type="text" id="domainSearchInput" placeholder="e.g. mybrandname" required>
+                <span class="tld-suffix">.store</span>
+              </div>
+              <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+            <div class="domain-tips">
+              <span class="tip-chip">Keep it under 15 characters</span>
+              <span class="tip-chip">Avoid hyphens &amp; numbers</span>
+              <span class="tip-chip">Start with your brand name</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero result (exact match, shown after search) -->
+        <div class="card result-card" id="domainResult" hidden>
+          <div class="result-row">
+            <div class="result-info">
+              <div class="result-domain">
+                <span id="resultDomainName">brand.store</span>
+                <span class="badge-free">Exact match</span>
+              </div>
+              <div class="result-meta">
+                <span class="dot-available"></span>
+                <span class="meta-available">Available</span>
+                <span class="meta-sep">·</span>
+                <span class="meta-renew">Free then $49/yr</span>
+              </div>
+            </div>
+            <div class="result-action">
+              <button class="btn btn-primary register-trigger" data-register>Register</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suggested alternatives list -->
+        <div class="card suggestions-card" id="suggestionsCard" hidden>
+          <div class="suggestions-header">More .store options</div>
+          <div class="suggestions-list" id="suggestionsList"></div>
+        </div>
+
+        <!-- Registration form -->
+        <div class="card register-card" id="registerCard" hidden>
+          <div class="register-eyebrow">REGISTERING</div>
+          <div class="register-title">
+            <span id="registerDomainName">brand.store</span>
+            <span class="badge-free">1<sup>st</sup> Year Free</span>
+          </div>
+          <div class="register-price-line">Free for first year, then $49/yr</div>
+
+          <form id="registerForm" class="register-form">
+            <div class="form-row two-col">
+              <label class="field">
+                <span class="field-label">First name</span>
+                <input type="text" name="firstName" value="Mohammad" required>
+              </label>
+              <label class="field">
+                <span class="field-label">Last name</span>
+                <input type="text" name="lastName" value="Aqueeb" required>
+              </label>
+            </div>
+            <label class="field">
+              <span class="field-label">Email</span>
+              <input type="email" name="email" value="aqueeb@radix.email" required>
+            </label>
+
+            <label class="consent">
+              <input type="checkbox" id="consent" required>
+              <span>I agree to create a domain account with Namify and accept their <a href="#" id="legalTerms">legal terms</a>.</span>
+            </label>
+
+            <div class="register-actions">
+              <button type="button" class="btn" id="cancelRegister">Back</button>
+              <button type="submit" class="btn btn-primary">Register domain</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Success card -->
+        <div class="card success-card" id="successCard" hidden>
+          <div class="success-header">
+            <div class="success-check">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#047b5d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+            </div>
+            <div>
+              <div class="success-title">Domain registered!</div>
+              <div class="success-sub"><span id="successDomainName">brand.store</span> is now yours</div>
+            </div>
+          </div>
+          <div class="success-body">
+            <div class="steps-intro">Next, connect it to your Shopify store in two quick steps:</div>
+            <ol class="steps-list">
+              <li>
+                <span class="step-num">1</span>
+                <div class="step-text">
+                  Open <strong>Settings &rsaquo; Domains</strong> in your Shopify admin.
+                </div>
+              </li>
+              <li>
+                <span class="step-num">2</span>
+                <div class="step-text">
+                  Click <strong>Connect existing domain</strong> and enter <strong><span class="successDomainInline">brand.store</span></strong>.
+                </div>
+              </li>
+            </ol>
+            <div class="steps-footnote">Allow up to 30 minutes for <strong><span class="successDomainInline">brand.store</span></strong> to finish connecting to your Shopify store.</div>
+          </div>
+          <div class="success-actions">
+            <button class="btn" id="backToSetupGuide">Go back to setup guide</button>
+            <button class="btn btn-primary">Domain settings</button>
+          </div>
+        </div>
+
+        <div class="card" hidden id="oldUnusedCard" style="display:none">
+          <div class="card-title">Custom domain</div>
+
+          <div class="row">
+            <div class="row-main">
+              <div class="row-title">
+                Claim your free .store domain
+                <span class="badge on">Free</span>
+              </div>
+              <div class="row-desc">Get a memorable, branded web address on the house — included with your Judge.me plan. Strengthen trust at checkout and in review request emails with a domain customers recognize.</div>
+            </div>
+            <div class="row-actions">
+              <button class="btn btn-primary">Claim free domain</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row-main">
+              <div class="row-title">Connect an existing domain</div>
+              <div class="row-desc">Already own a domain? Point it to your Judge.me review pages with a quick DNS setup.</div>
+            </div>
+            <div class="row-actions">
+              <button class="btn">Connect domain</button>
+            </div>
+          </div>
+
+          <div class="row clickable">
+            <div class="row-main">
+              <div class="row-title">Browse premium domains</div>
+              <div class="row-desc">Explore .shop, .reviews and other premium TLDs to match your brand.</div>
+            </div>
+            <div class="row-actions">
+              <span class="caret">
+                <svg viewBox="0 0 5 8"><path d="M0.953125 1.71092C0.698793 1.47778 0.681157 1.08257 0.914062 0.828107C1.1472 0.573776 1.54241 0.55614 1.79688 0.789045L4.79688 3.53904C4.92602 3.65743 5 3.82479 5 3.99998C5 4.17517 4.92602 4.34254 4.79688 4.46092L1.79688 7.21092L1.69629 7.28612C1.44691 7.39463 1.11827 7.39463 0.914063 7.17186C0.710324 6.94926 0.697796 6.61905 0.868164 6.38377L0.953125 6.28905L3.4502 3.99998L0.953125 1.71092Z" fill="#616161"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+       </div>
+      </section>
+    </div>
+    </div>
+
+    <button class="chat-fab" aria-label="Help chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      </svg>
+    </button>
+  </main>
+</div>
+
+<script>
+  (function () {
+    // ===== Page-level navigation (home / reviews / settings) =====
+    const pageNavItems = document.querySelectorAll('[data-page]');
+    const pages = document.querySelectorAll('.app-page[data-page]');
+    function gotoPage(name) {
+      pages.forEach(p => {
+        if (p.getAttribute('data-page') === name) p.removeAttribute('hidden');
+        else p.setAttribute('hidden', '');
+      });
+      document.querySelectorAll('.nav-sub li').forEach(li => {
+        li.classList.toggle('active', li.getAttribute('data-page') === name);
+      });
+    }
+    pageNavItems.forEach(item => {
+      if (item.classList.contains('app-page')) return;
+      item.addEventListener('click', (e) => {
+        const name = item.getAttribute('data-page');
+        if (!name) return;
+        gotoPage(name);
+      });
+    });
+
+    // ===== Settings sub-view navigation =====
+    const settingsItems = document.querySelectorAll('.settings-list li[data-view]');
+    const views = document.querySelectorAll('.view[data-view]');
+    function gotoView(target) {
+      settingsItems.forEach(el => el.classList.toggle('active', el.getAttribute('data-view') === target));
+      views.forEach(v => {
+        if (v.getAttribute('data-view') === target) v.removeAttribute('hidden');
+        else v.setAttribute('hidden', '');
+      });
+    }
+    settingsItems.forEach(item => {
+      item.addEventListener('click', () => gotoView(item.getAttribute('data-view')));
+    });
+
+    // ===== Setup-now jumps to Settings → Domain setup =====
+    const setupDomainBtn = document.getElementById('setupDomainBtn');
+    if (setupDomainBtn) {
+      setupDomainBtn.addEventListener('click', () => {
+        gotoPage('settings');
+        gotoView('domain');
+      });
+    }
+
+    // ===== Setup guide state transitions =====
+    function completeStepAndAdvance(stepNumber) {
+      const current = document.querySelector(`.task[data-step="${stepNumber}"]`);
+      const next = document.querySelector(`.task[data-step="${stepNumber + 1}"]`);
+      if (current) {
+        current.classList.remove('task-active');
+        current.classList.add('task-complete');
+      }
+      if (next) {
+        next.classList.add('task-active');
+      }
+      const totalComplete = document.querySelectorAll('.task.task-complete').length;
+      const total = document.querySelectorAll('.task').length;
+      const label = document.getElementById('setupProgressLabel');
+      if (label) label.textContent = `${totalComplete} of ${total} tasks complete`;
+    }
+
+    // Dismiss link on a task body advances to the next step
+    document.addEventListener('click', (e) => {
+      const dismiss = e.target.closest('[data-dismiss-step]');
+      if (!dismiss) return;
+      e.preventDefault();
+      const step = parseInt(dismiss.getAttribute('data-dismiss-step'), 10);
+      completeStepAndAdvance(step);
+    });
+
+    // Success card → Go back to setup guide
+    const backToSetupGuide = document.getElementById('backToSetupGuide');
+    if (backToSetupGuide) {
+      backToSetupGuide.addEventListener('click', () => {
+        completeStepAndAdvance(3);
+        gotoPage('home');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    function refreshProgressLabel() {
+      const totalComplete = document.querySelectorAll('.task.task-complete').length;
+      const total = document.querySelectorAll('.task').length;
+      const label = document.getElementById('setupProgressLabel');
+      if (label) label.textContent = `${totalComplete} of ${total} tasks complete`;
+    }
+
+    // Re-open Setup branded domain even after it has been completed.
+    const step3 = document.querySelector('.task[data-step="3"]');
+    if (step3) {
+      step3.addEventListener('click', (e) => {
+        if (!step3.classList.contains('task-complete')) return;
+        if (e.target.closest('.btn') || e.target.closest('a')) return;
+        document.querySelectorAll('.task.task-active').forEach(el => {
+          if (el !== step3) el.classList.remove('task-active');
+        });
+        step3.classList.remove('task-complete');
+        step3.classList.add('task-active');
+        refreshProgressLabel();
+      });
+    }
+
+    // ===== Domain setup flow =====
+    const searchHero = document.getElementById('domainSearchHero');
+    const searchForm = document.getElementById('domainSearchForm');
+    const searchInput = document.getElementById('domainSearchInput');
+    const resultCard = document.getElementById('domainResult');
+    const suggestionsCard = document.getElementById('suggestionsCard');
+    const suggestionsList = document.getElementById('suggestionsList');
+    const registerCard = document.getElementById('registerCard');
+    const successCard = document.getElementById('successCard');
+    const resultName = document.getElementById('resultDomainName');
+    const registerName = document.getElementById('registerDomainName');
+    const successName = document.getElementById('successDomainName');
+    const cancelRegister = document.getElementById('cancelRegister');
+    const registerForm = document.getElementById('registerForm');
+
+    function show(el) { el && el.removeAttribute('hidden'); }
+    function hide(el) { el && el.setAttribute('hidden', ''); }
+    function cleanInput(v) {
+      return (v || '').toLowerCase().replace(/\.store$/, '').replace(/[^a-z0-9-]/g, '').slice(0, 30);
+    }
+
+    const SUGGESTION_PREFIXES = ['shop', 'get', 'the', 'my', 'try'];
+    const SUGGESTION_SUFFIXES = ['shop', 'hq', 'co', 'hub', 'store'];
+
+    function buildSuggestions(base) {
+      const pool = [];
+      SUGGESTION_PREFIXES.forEach(p => pool.push(p + base));
+      SUGGESTION_SUFFIXES.forEach(s => { if (base !== s) pool.push(base + s); });
+      const seen = new Set([base]);
+      const out = [];
+      for (const name of pool) {
+        if (seen.has(name)) continue;
+        seen.add(name);
+        out.push(name + '.store');
+        if (out.length >= 5) break;
+      }
+      return out;
+    }
+
+    function renderSuggestions(items) {
+      suggestionsList.innerHTML = '';
+      items.forEach(domain => {
+        const row = document.createElement('div');
+        row.className = 'suggestion-row';
+        row.innerHTML = `
+          <div class="suggestion-info">
+            <div class="suggestion-name">
+              <span>${domain}</span>
+            </div>
+            <div class="suggestion-meta">
+              <span class="dot-available"></span>
+              <span>Available</span>
+              <span class="meta-sep">·</span>
+              <span>Free then $49/yr</span>
+            </div>
+          </div>
+          <div class="suggestion-action">
+            <button class="btn btn-primary register-trigger" data-register data-domain="${domain}">Register</button>
+          </div>
+        `;
+        suggestionsList.appendChild(row);
+      });
+    }
+
+    let currentDomain = '';
+
+    if (searchForm) {
+      searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const clean = cleanInput(searchInput.value);
+        if (!clean) return;
+        const exact = clean + '.store';
+        currentDomain = exact;
+        resultName.textContent = exact;
+        renderSuggestions(buildSuggestions(clean));
+        hide(registerCard);
+        hide(successCard);
+        show(resultCard);
+        show(suggestionsCard);
+        resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+
+    // Delegated handler — works for hero result + every suggestion row
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-register]');
+      if (!btn) return;
+      const domain = btn.getAttribute('data-domain') || currentDomain;
+      currentDomain = domain;
+      registerName.textContent = domain;
+      hide(searchHero);
+      hide(resultCard);
+      hide(suggestionsCard);
+      show(registerCard);
+      registerCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    if (cancelRegister) {
+      cancelRegister.addEventListener('click', () => {
+        hide(registerCard);
+        show(searchHero);
+        show(resultCard);
+        show(suggestionsCard);
+      });
+    }
+
+    if (registerForm) {
+      registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        successName.textContent = currentDomain;
+        document.querySelectorAll('.successDomainInline').forEach(el => {
+          el.textContent = currentDomain;
+        });
+        hide(registerCard);
+        hide(searchHero);
+        hide(resultCard);
+        hide(suggestionsCard);
+        show(successCard);
+        successCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+  })();
+</script>
+</body>
+</html>
