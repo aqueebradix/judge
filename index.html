@@ -695,8 +695,8 @@
   .task.task-active .task-body { display: block; }
   .task.task-active > .task-label { display: none; }
   .task.task-complete .task-body { display: none; }
-  .task[data-step="3"].task-complete { cursor: pointer; }
-  .task[data-step="3"].task-complete:hover { background: #f7f7f7; }
+  .task[data-step="6"].task-complete { cursor: pointer; }
+  .task[data-step="6"].task-complete:hover { background: #f7f7f7; }
   .task-active {
     background: #f1f1f1;
     padding: 14px 8px;
@@ -727,6 +727,100 @@
     font-weight: 500;
   }
   .task-dismiss:hover { text-decoration: underline; }
+
+  /* Trial options card */
+  .trial-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .trial-card {
+    background: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 10px;
+    padding: 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .trial-card-recommended {
+    border: 1.5px solid #5d8fff;
+    box-shadow: 0 0 0 0.5px #5d8fff;
+  }
+  .trial-recommended {
+    position: absolute;
+    top: -10px;
+    right: 14px;
+    background: #d5e6ff;
+    color: #002e6a;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+  }
+  .trial-card-name {
+    font-size: 14px;
+    font-weight: 650;
+    color: #303030;
+    margin-bottom: 4px;
+  }
+  .trial-card-sub {
+    font-size: 13px;
+    color: #303030;
+    margin-bottom: 14px;
+    line-height: 18px;
+  }
+  .trial-days {
+    font-size: 13px;
+    color: #303030;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .trial-days-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: #303030;
+    line-height: 1;
+  }
+  .trial-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .trial-features li {
+    font-size: 13px;
+    color: #303030;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 18px;
+  }
+  .trial-features li::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23047b5d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 8.5l3.5 3.5L13 4.5'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+  }
+  .trial-features li.star-feature::before {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23b28400' stroke-width='1.5' stroke-linejoin='round'><path d='M8 1.8l1.85 4 4.35.55-3.2 3 .8 4.3L8 11.7l-3.8 1.95.8-4.3L1.8 6.35l4.35-.55z'/></svg>");
+  }
+  .trial-btn { width: 100%; margin-top: auto; }
+  .trial-btn-primary {
+    background: #d5e6ff;
+    color: #002e6a;
+    box-shadow: 0 0 0 1px #5d8fff inset;
+  }
+  .trial-btn-primary:hover { background: #c5d9ff; }
 
   /* Dashboard */
   .dashboard { padding: 18px 20px 20px; }
@@ -927,6 +1021,124 @@
   }
   .domain-hero-titlerow .domain-hero-title { margin: 0; }
 
+  /* Progress card */
+  .progress-card {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #fffaf0 0%, #f9f5ff 100%);
+    border: 1px solid #ffe69e;
+  }
+  .progress-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .progress-trophy {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #fff8db;
+    box-shadow: 0 0 0 1px #ffe69e;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .trophy-icon {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    transition: opacity 220ms ease, transform 380ms cubic-bezier(.34, 1.56, .64, 1);
+  }
+  .progress-trophy .trophy-lock { opacity: 1; transform: scale(1) rotate(0deg); }
+  .progress-trophy .trophy-star { opacity: 0; transform: scale(0) rotate(-90deg); }
+  .progress-trophy.is-unlocked .trophy-lock { opacity: 0; transform: scale(0.4) rotate(20deg); }
+  .progress-trophy.is-unlocked .trophy-star { opacity: 1; transform: scale(1) rotate(0deg); }
+  .progress-titles { flex: 1; min-width: 0; }
+  .progress-title {
+    font-size: 14px;
+    font-weight: 650;
+    color: #303030;
+    letter-spacing: -0.005em;
+    line-height: 20px;
+  }
+  .progress-subtitle {
+    font-size: 12px;
+    color: #616161;
+    line-height: 16px;
+    margin-top: 2px;
+  }
+  .progress-step-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #303030;
+    white-space: nowrap;
+    background: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 999px;
+    padding: 3px 10px;
+    flex-shrink: 0;
+  }
+  .progress-bar {
+    height: 8px;
+    background: #ebebeb;
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+    transition: height 380ms cubic-bezier(.42, 0, .58, 1),
+                border-radius 380ms cubic-bezier(.42, 0, .58, 1),
+                box-shadow 380ms ease;
+  }
+  .progress-bar.is-cta {
+    height: 44px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  }
+  .progress-bar.is-cta:hover { filter: brightness(1.06); }
+  .progress-bar.is-cta:active { filter: brightness(.95); }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #b28400 0%, #047b5d 100%);
+    border-radius: inherit;
+    transition: width 380ms cubic-bezier(.42, 0, .58, 1);
+  }
+  .progress-cta-label {
+    position: absolute;
+    inset: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 650;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 240ms ease 200ms, transform 280ms ease 200ms;
+    pointer-events: none;
+    letter-spacing: -0.005em;
+  }
+  .progress-cta-label svg { width: 16px; height: 16px; }
+  .progress-bar.is-cta .progress-cta-label {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .progress-step-label {
+    transition: opacity 200ms ease, transform 200ms ease;
+  }
+  .progress-step-label.is-hidden {
+    opacity: 0;
+    transform: scale(0.7);
+    width: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
   /* Result card */
   .result-card { padding: 16px 20px; border: 1px solid #c5d0ff; background: #fafbff; }
   .register-trigger { height: 32px; }
@@ -1123,7 +1335,7 @@
   .success-title { font-size: 16px; font-weight: 650; color: #014b40; }
   .success-sub { font-size: 13px; color: #303030; margin-top: 2px; }
   .success-body {
-    padding: 16px 24px;
+    padding: 16px 24px 20px;
     font-size: 13px;
     color: #303030;
     line-height: 18px;
@@ -1440,7 +1652,7 @@
         <div class="setup-guide-top">
           <span class="setup-progress">
             <img src="assets/wand_minor.svg" alt="" class="wand-icon">
-            <strong id="setupProgressLabel">2 of 7 tasks complete</strong>
+            <strong id="setupProgressLabel">5 of 6 tasks complete</strong>
           </span>
           <div class="setup-guide-controls">
             <button class="icon-btn-light" aria-label="More">
@@ -1468,26 +1680,9 @@
             <span class="task-label">Customize the review widget</span>
           </li>
 
-          <li class="task task-active" data-step="3">
+          <li class="task task-complete" data-step="3">
             <span class="task-icon" aria-hidden="true">
               <span class="num-bullet">3</span>
-              <img class="active-icon" src="assets/ellipse_231.svg" alt="">
-              <img class="complete-icon" src="assets/circle-tick_major.svg" alt="">
-            </span>
-            <span class="task-label">Setup branded domain</span>
-            <div class="task-body">
-              <div class="task-title">Setup branded domain</div>
-              <div class="task-desc">Sell more and collect more reviews with free .store domain for one year.</div>
-              <div class="task-actions">
-                <button class="btn btn-primary" id="setupDomainBtn">Setup now</button>
-                <a href="#" class="task-dismiss" data-dismiss-step="3" onclick="event.preventDefault()">Dismiss</a>
-              </div>
-            </div>
-          </li>
-
-          <li class="task" data-step="4">
-            <span class="task-icon" aria-hidden="true">
-              <span class="num-bullet">4</span>
               <img class="active-icon" src="assets/ellipse_231.svg" alt="">
               <img class="complete-icon" src="assets/circle-tick_major.svg" alt="">
             </span>
@@ -1500,26 +1695,53 @@
               </div>
             </div>
           </li>
-          <li class="task" data-step="5">
+          <li class="task task-complete" data-step="4">
             <span class="task-icon" aria-hidden="true">
-              <span class="num-bullet">5</span>
+              <span class="num-bullet">4</span>
               <img class="complete-icon" src="assets/circle-tick_major.svg" alt="">
             </span>
             <span class="task-label">Review request schedule</span>
           </li>
-          <li class="task" data-step="6">
+          <li class="task task-complete" data-step="5">
             <span class="task-icon" aria-hidden="true">
-              <span class="num-bullet">6</span>
+              <span class="num-bullet">5</span>
               <img class="complete-icon" src="assets/circle-tick_major.svg" alt="">
             </span>
             <span class="task-label">Personalize review request email</span>
           </li>
-          <li class="task" data-step="7">
+          <li class="task task-active" data-step="6">
             <span class="task-icon" aria-hidden="true">
-              <span class="num-bullet">7</span>
+              <span class="num-bullet">6</span>
+              <img class="active-icon" src="assets/ellipse_231.svg" alt="">
               <img class="complete-icon" src="assets/circle-tick_major.svg" alt="">
             </span>
             <span class="task-label">Grab your free Judge.me Awesome trial</span>
+            <div class="task-body">
+              <div class="task-title">Grab your free Judge.me Awesome trial</div>
+              <div class="task-desc">Try all premium features free, if you love it, keep it for just $15/month.</div>
+
+              <div class="trial-options">
+                <div class="trial-card">
+                  <div class="trial-card-name">15 days free trial</div>
+                  <div class="trial-card-sub">Start with all Awesome features</div>
+                  <ul class="trial-features">
+                    <li>All premium features</li>
+                  </ul>
+                  <button class="btn trial-btn" id="startTrial15">Start free trial</button>
+                </div>
+
+                <div class="trial-card trial-card-recommended">
+                  <span class="trial-recommended">Recommended</span>
+                  <div class="trial-card-name">45 days free trial</div>
+                  <div class="trial-card-sub">Get a free .store domain + 3x the trial</div>
+                  <ul class="trial-features">
+                    <li>All premium features</li>
+                    <li class="star-feature">Free .store domain (1 year)</li>
+                  </ul>
+                  <button class="btn trial-btn trial-btn-primary" id="startTrial45">Start free trial</button>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -1815,6 +2037,28 @@
           <h2>Domain setup</h2>
         </div>
 
+        <!-- Progress card -->
+        <div class="card progress-card" id="progressCard">
+          <div class="progress-header">
+            <span class="progress-trophy" id="progressTrophy" aria-hidden="true">
+              <svg class="trophy-icon trophy-lock" viewBox="0 0 16 16"><path d="M5 7.25V5.5a3 3 0 0 1 6 0v1.75h.25a1.5 1.5 0 0 1 1.5 1.5v4.75a1.5 1.5 0 0 1-1.5 1.5h-6.5a1.5 1.5 0 0 1-1.5-1.5V8.75a1.5 1.5 0 0 1 1.5-1.5zm1.25 0h2.5V5.5a1.25 1.25 0 0 0-2.5 0z" fill="#b28400"/></svg>
+              <svg class="trophy-icon trophy-star" viewBox="0 0 16 16"><path d="M8 1.2l1.55 3.65 3.95.35-3 2.6.9 3.85L8 9.65l-3.4 2 .9-3.85-3-2.6 3.95-.35z" fill="#b28400"/></svg>
+            </span>
+            <div class="progress-titles">
+              <div class="progress-title" id="progressTitle">Unlock 45-day free trial Judge.me Awesome plan</div>
+              <div class="progress-subtitle" id="progressSubtitle">Complete .store domain registration to unlock</div>
+            </div>
+            <span class="progress-step-label" id="progressStepLabel">Step 1 of 3</span>
+          </div>
+          <div class="progress-bar" id="progressBar" role="presentation">
+            <div class="progress-bar-fill" id="progressBarFill" style="width: 33%;"></div>
+            <span class="progress-cta-label" id="progressCtaLabel">
+              Start 45-day free trial
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M9.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L12.19 8.75H2.75a.75.75 0 0 1 0-1.5h9.44L9.22 4.28a.75.75 0 0 1 0-1.06"/></svg>
+            </span>
+          </div>
+        </div>
+
         <!-- Search hero -->
         <div class="card domain-hero" id="domainSearchHero">
           <div class="domain-hero-body">
@@ -1879,16 +2123,16 @@
             <div class="form-row two-col">
               <label class="field">
                 <span class="field-label">First name</span>
-                <input type="text" name="firstName" value="Mohammad" required>
+                <input type="text" name="firstName" value="Alex" required>
               </label>
               <label class="field">
                 <span class="field-label">Last name</span>
-                <input type="text" name="lastName" value="Aqueeb" required>
+                <input type="text" name="lastName" value="Rivera" required>
               </label>
             </div>
             <label class="field">
               <span class="field-label">Email</span>
-              <input type="email" name="email" value="aqueeb@radix.email" required>
+              <input type="email" name="email" value="alex.rivera@gmail.com" required>
             </label>
 
             <label class="consent">
@@ -1931,10 +2175,6 @@
               </li>
             </ol>
             <div class="steps-footnote">Allow up to 30 minutes for <strong><span class="successDomainInline">brand.store</span></strong> to finish connecting to your Shopify store.</div>
-          </div>
-          <div class="success-actions">
-            <button class="btn" id="backToSetupGuide">Go back to setup guide</button>
-            <button class="btn btn-primary">Domain settings</button>
           </div>
         </div>
 
@@ -2023,52 +2263,27 @@
       });
     }
     settingsItems.forEach(item => {
-      item.addEventListener('click', () => gotoView(item.getAttribute('data-view')));
+      item.addEventListener('click', () => {
+        const target = item.getAttribute('data-view');
+        gotoView(target);
+        if (target === 'domain') resetDomainFlow();
+      });
     });
 
-    // ===== Setup-now jumps to Settings → Domain setup =====
-    const setupDomainBtn = document.getElementById('setupDomainBtn');
-    if (setupDomainBtn) {
-      setupDomainBtn.addEventListener('click', () => {
-        gotoPage('settings');
-        gotoView('domain');
-      });
-    }
-
-    // ===== Setup guide state transitions =====
-    function completeStepAndAdvance(stepNumber) {
-      const current = document.querySelector(`.task[data-step="${stepNumber}"]`);
-      const next = document.querySelector(`.task[data-step="${stepNumber + 1}"]`);
-      if (current) {
-        current.classList.remove('task-active');
-        current.classList.add('task-complete');
-      }
-      if (next) {
-        next.classList.add('task-active');
-      }
-      const totalComplete = document.querySelectorAll('.task.task-complete').length;
-      const total = document.querySelectorAll('.task').length;
-      const label = document.getElementById('setupProgressLabel');
-      if (label) label.textContent = `${totalComplete} of ${total} tasks complete`;
-    }
-
-    // Dismiss link on a task body advances to the next step
-    document.addEventListener('click', (e) => {
-      const dismiss = e.target.closest('[data-dismiss-step]');
-      if (!dismiss) return;
-      e.preventDefault();
-      const step = parseInt(dismiss.getAttribute('data-dismiss-step'), 10);
-      completeStepAndAdvance(step);
-    });
-
-    // Success card → Go back to setup guide
-    const backToSetupGuide = document.getElementById('backToSetupGuide');
-    if (backToSetupGuide) {
-      backToSetupGuide.addEventListener('click', () => {
-        completeStepAndAdvance(3);
-        gotoPage('home');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+    function resetDomainFlow() {
+      const sh = document.getElementById('domainSearchHero');
+      const rc = document.getElementById('domainResult');
+      const sc = document.getElementById('suggestionsCard');
+      const reg = document.getElementById('registerCard');
+      const suc = document.getElementById('successCard');
+      const inp = document.getElementById('domainSearchInput');
+      if (sh) sh.removeAttribute('hidden');
+      if (rc) rc.setAttribute('hidden', '');
+      if (sc) sc.setAttribute('hidden', '');
+      if (reg) reg.setAttribute('hidden', '');
+      if (suc) suc.setAttribute('hidden', '');
+      if (inp) inp.value = '';
+      setProgress('search');
     }
 
     function refreshProgressLabel() {
@@ -2078,17 +2293,46 @@
       if (label) label.textContent = `${totalComplete} of ${total} tasks complete`;
     }
 
-    // Re-open Setup branded domain even after it has been completed.
-    const step3 = document.querySelector('.task[data-step="3"]');
-    if (step3) {
-      step3.addEventListener('click', (e) => {
-        if (!step3.classList.contains('task-complete')) return;
+    function markStepComplete(stepNumber) {
+      const current = document.querySelector(`.task[data-step="${stepNumber}"]`);
+      if (current) {
+        current.classList.remove('task-active');
+        current.classList.add('task-complete');
+      }
+      refreshProgressLabel();
+    }
+
+    // ===== Trial "Start free trial" buttons =====
+    // 45-day option → free .store domain flow inside Settings.
+    const startTrial45 = document.getElementById('startTrial45');
+    if (startTrial45) {
+      startTrial45.addEventListener('click', () => {
+        gotoPage('settings');
+        gotoView('domain');
+        resetDomainFlow();
+      });
+    }
+
+    // 15-day option → just mark trial step complete (no domain).
+    const startTrial15 = document.getElementById('startTrial15');
+    if (startTrial15) {
+      startTrial15.addEventListener('click', () => {
+        markStepComplete(6);
+      });
+    }
+
+
+    // Re-open the trial step even after it has been completed.
+    const trialStep = document.querySelector('.task[data-step="6"]');
+    if (trialStep) {
+      trialStep.addEventListener('click', (e) => {
+        if (!trialStep.classList.contains('task-complete')) return;
         if (e.target.closest('.btn') || e.target.closest('a')) return;
         document.querySelectorAll('.task.task-active').forEach(el => {
-          if (el !== step3) el.classList.remove('task-active');
+          if (el !== trialStep) el.classList.remove('task-active');
         });
-        step3.classList.remove('task-complete');
-        step3.classList.add('task-active');
+        trialStep.classList.remove('task-complete');
+        trialStep.classList.add('task-active');
         refreshProgressLabel();
       });
     }
@@ -2112,6 +2356,52 @@
     function hide(el) { el && el.setAttribute('hidden', ''); }
     function cleanInput(v) {
       return (v || '').toLowerCase().replace(/\.store$/, '').replace(/[^a-z0-9-]/g, '').slice(0, 30);
+    }
+
+    // ===== Domain registration progress (bar + step counter) =====
+    let ctaMorphTimer = null;
+    function setProgress(state) {
+      const fill = document.getElementById('progressBarFill');
+      const label = document.getElementById('progressStepLabel');
+      const bar = document.getElementById('progressBar');
+      const trophy = document.getElementById('progressTrophy');
+      const title = document.getElementById('progressTitle');
+      const sub = document.getElementById('progressSubtitle');
+      if (ctaMorphTimer) { clearTimeout(ctaMorphTimer); ctaMorphTimer = null; }
+
+      let pct = 33, step = 1;
+      if (state === 'details') { pct = 66; step = 2; }
+      else if (state === 'done') { pct = 100; step = 3; }
+      if (fill) fill.style.width = pct + '%';
+      if (label) label.textContent = `Step ${step} of 3`;
+
+      if (state === 'done') {
+        if (title) title.textContent = 'Judge.me Awesome plan unlocked';
+        if (sub) sub.textContent = 'Your 45-day free trial is ready to start';
+        if (trophy) trophy.classList.add('is-unlocked');
+        // Let the bar fill finish first, then morph it into a button.
+        ctaMorphTimer = setTimeout(() => {
+          if (bar) bar.classList.add('is-cta');
+          if (label) label.classList.add('is-hidden');
+        }, 420);
+      } else {
+        if (title) title.textContent = 'Unlock 45-day free trial Judge.me Awesome plan';
+        if (sub) sub.textContent = 'Complete .store domain registration to unlock';
+        if (trophy) trophy.classList.remove('is-unlocked');
+        if (bar) bar.classList.remove('is-cta');
+        if (label) label.classList.remove('is-hidden');
+      }
+    }
+
+    // Morphed progress bar acts as the primary CTA in 'done' state.
+    const progressBarEl = document.getElementById('progressBar');
+    if (progressBarEl) {
+      progressBarEl.addEventListener('click', () => {
+        if (!progressBarEl.classList.contains('is-cta')) return;
+        markStepComplete(6);
+        gotoPage('home');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     }
 
     const SUGGESTION_PREFIXES = ['shop', 'get', 'the', 'my', 'try'];
@@ -2187,6 +2477,7 @@
       hide(resultCard);
       hide(suggestionsCard);
       show(registerCard);
+      setProgress('details');
       registerCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
 
@@ -2196,6 +2487,7 @@
         show(searchHero);
         show(resultCard);
         show(suggestionsCard);
+        setProgress('search');
       });
     }
 
@@ -2211,6 +2503,7 @@
         hide(resultCard);
         hide(suggestionsCard);
         show(successCard);
+        setProgress('done');
         successCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       });
     }
